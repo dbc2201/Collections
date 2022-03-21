@@ -38,8 +38,13 @@ public class MainController {
     }
 
     @FXML
-    public void viewAllStudents(ActionEvent actionEvent) {
-
+    public void viewAllStudents(ActionEvent actionEvent) throws IOException {
+        Stage viewAllStudentsStage = new Stage();
+        FXMLLoader loader = new FXMLLoader(CRUDApplication.class.getResource("read-view.fxml"));
+        Scene scene = new Scene(loader.load(), 400.0, 400.0);
+        viewAllStudentsStage.setTitle("View All Students");
+        viewAllStudentsStage.setScene(scene);
+        viewAllStudentsStage.show();
     }
 
     @FXML
