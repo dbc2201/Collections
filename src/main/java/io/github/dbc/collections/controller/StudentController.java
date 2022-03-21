@@ -1,14 +1,13 @@
 package io.github.dbc.collections.controller;
 
 import io.github.dbc.collections.model.Student;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class StudentController {
 
@@ -20,10 +19,51 @@ public class StudentController {
     @FXML
     public Button createNewStudentButton;
 
-    private List<Student> studentList;
+    @FXML
+    public ListView<Student> studentListView = new ListView<>();
 
-    public StudentController() {
-        this.studentList = new ArrayList<>();
+    @FXML
+    public Button loadStudentsButton;
+
+    @FXML
+    public TextField updateNameTextField;
+
+    @FXML
+    public TextField updateFirstNameTextField;
+
+    @FXML
+    public TextField updateLastNameTextField;
+
+    @FXML
+    public Button updateStudentButton;
+
+    @FXML
+    public Button searchButton;
+
+    @FXML
+    public Button createFakeStudentButton;
+
+    private boolean doesUserExist = false;
+
+    @FXML
+    public void createFakeStudent(ActionEvent actionEvent) {
+        Student student = new Student("Nobita", "Nobi");
+        MainController.getStudentList().add(student);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("SUCCESS");
+        alert.setContentText("Nobita added to the list");
+        alert.show();
+    }
+
+    @FXML
+    private boolean searchName(ActionEvent actionEvent) {
+        String firstName = updateNameTextField.getText().split(",\\s")[0];
+        String lastName = updateNameTextField.getText().split(",\\s")[1];
+
+        boolean doesUserExist = MainController.getStudentList().stream()
+                .anyMatch(student -> student.getFirstName().equals(firstName) && student.getLastName().equals(lastName));
+
+        return doesUserExist;
     }
 
     // create
@@ -46,7 +86,7 @@ public class StudentController {
             alert.showAndWait();
         } else {
             Student student = new Student(firstName, lastName);
-            studentList.add(student);
+            MainController.getStudentList().add(student);
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("SUCCESS");
             alert.setContentText(firstName + " added to the list!");
@@ -57,13 +97,39 @@ public class StudentController {
     // read
     @FXML
     public void readAllStudentsFromList(ActionEvent actionEvent) {
+        studentListView.setItems(FXCollections.observableArrayList(MainController.getStudentList()));
+        studentListView.setEditable(true);
+        studentListView.setPrefSize(100.0, 100.0);
+    }
 
+    private boolean searchNameInList(String firstName, String lastName) {
+        return doesUserExist = MainController.getStudentList()
+                .stream()
+                .anyMatch(student -> student.getFirstName().equals(firstName) && student.getLastName().equals(lastName));
     }
 
     // update
     @FXML
     public void updateStudentDetailsInList(ActionEvent actionEvent) {
+        String name = updateNameTextField.getText();
+        String firstName = name.split(",\\s")[0];
+        String lastName = name.split(",\\s")[1];
 
+        if (!searchNameInList(firstName, lastName)) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setContentText("Student Not Found");
+            alert.show();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("SUCCESS");
+            alert.setContentText(firstName + " found in the list");
+            alert.show();
+            doesUserExist = true;
+        }
+        if (doesUserExist) {
+
+        }
     }
 
     // delete

@@ -5,43 +5,47 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
-      minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
-      xmlns="http://javafx.com/javafx/16" fx:controller="io.github.dbc.collections.controller.StudentController">
-   <children>
-
-      <Label text="Create New Student" underline="true">
-         <font>
+      minHeight="-Infinity"
+      minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16"
+      fx:controller="io.github.dbc.collections.controller.StudentController">
+    <Label text="Create New Student" underline="true">
+        <font>
             <Font size="24.0"/>
-         </font>
-      </Label>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-         <children>
+        </font>
+    </Label>
+    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+        <children>
             <Label text="First Name">
-               <font>
-                  <Font size="18.0"/>
-               </font>
+                <font>
+                    <Font size="18.0"/>
+                </font>
             </Label>
             <TextField fx:id="createFirstNameTextField" promptText="first name">
-               <HBox.margin>
-                  <Insets left="8.0"/>
-               </HBox.margin>
+                <HBox.margin>
+                    <Insets left="8.0"/>
+                </HBox.margin>
             </TextField>
-         </children>
-      </HBox>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-         <children>
+        </children>
+    </HBox>
+    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+        <children>
             <Label text="Last Name">
-               <font>
-                  <Font size="18.0"/>
-               </font>
+                <font>
+                    <Font size="18.0"/>
+                </font>
             </Label>
             <TextField fx:id="createLastNameTextField" promptText="last name">
-               <HBox.margin>
-                  <Insets left="8.0"/>
-               </HBox.margin>
+                <HBox.margin>
+                    <Insets left="8.0"/>
+                </HBox.margin>
             </TextField>
-         </children>
-      </HBox>
-      <Button fx:id="createNewStudentButton" mnemonicParsing="false" onAction="#createNewStudentInList" text="create"/>
-   </children>
+        </children>
+    </HBox>
+    <Button fx:id="createNewStudentButton" mnemonicParsing="false" onAction="#createNewStudentInList" text="create">
+        <VBox.margin>
+            <Insets bottom="8.0"/>
+        </VBox.margin>
+    </Button>
+    <Button fx:id="createFakeStudentButton" mnemonicParsing="false" text="Create Fake Student"
+            onAction="#createFakeStudent"/>
 </VBox>

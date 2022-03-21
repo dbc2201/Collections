@@ -14,12 +14,12 @@
         </font>
     </Label>
     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-        <TextField promptText="first name, last name">
+        <TextField fx:id="updateNameTextField" promptText="first name, last name">
             <HBox.margin>
                 <Insets right="8.0"/>
             </HBox.margin>
         </TextField>
-        <Button mnemonicParsing="false" text="search"/>
+        <Button fx:id="searchButton" mnemonicParsing="false" onAction="#searchName" text="search"/>
     </HBox>
     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
         <Label text="First Name">
@@ -27,7 +27,7 @@
                 <Font size="18.0"/>
             </font>
         </Label>
-        <TextField fx:id="createFirstNameTextField" promptText="first name">
+        <TextField fx:id="updateFirstNameTextField" promptText="first name">
             <HBox.margin>
                 <Insets left="8.0"/>
             </HBox.margin>
@@ -39,11 +39,11 @@
                 <Font size="18.0"/>
             </font>
         </Label>
-        <TextField fx:id="createLastNameTextField" promptText="last name">
+        <TextField fx:id="updateLastNameTextField" promptText="last name">
             <HBox.margin>
                 <Insets left="8.0"/>
             </HBox.margin>
         </TextField>
     </HBox>
-    <Button mnemonicParsing="false" text="update"/>
+    <Button fx:id="updateStudentButton" mnemonicParsing="false" onAction="#updateStudentDetailsInList" text="update"/>
 </VBox>

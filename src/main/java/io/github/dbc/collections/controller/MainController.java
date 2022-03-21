@@ -1,6 +1,7 @@
 package io.github.dbc.collections.controller;
 
 import io.github.dbc.collections.CRUDApplication;
+import io.github.dbc.collections.model.Student;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +11,8 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
 
 public class MainController {
     @FXML
@@ -27,7 +30,14 @@ public class MainController {
     @FXML
     private Label welcomeText;
 
+    private static final List<Student> studentList = new LinkedList<>();
+
+    public static List<Student> getStudentList() {
+        return studentList;
+    }
+
     @FXML
+
     public void createNewStudent(ActionEvent actionEvent) throws IOException {
         Stage createStudentStage = new Stage();
         FXMLLoader loader = new FXMLLoader(CRUDApplication.class.getResource("create-view.fxml"));
