@@ -1,29 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Font?>
-<VBox xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
-      minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
-      xmlns="http://javafx.com/javafx/16" fx:controller="io.github.dbc.collections.controller.StudentController">
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.dbc.collections.controller.StudentController">
    <children>
 
       <Label text="Create New Student" underline="true">
          <font>
-            <Font size="24.0"/>
+            <Font size="24.0" />
          </font>
       </Label>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
             <Label text="First Name">
                <font>
-                  <Font size="18.0"/>
+                  <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="firstNameTextField" promptText="first name">
+            <TextField fx:id="createFirstNameTextField" promptText="first name">
                <HBox.margin>
-                  <Insets left="8.0"/>
+                  <Insets left="8.0" />
                </HBox.margin>
             </TextField>
          </children>
@@ -32,16 +31,16 @@
          <children>
             <Label text="Last Name">
                <font>
-                  <Font size="18.0"/>
+                  <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="lastNameTextField" promptText="last name">
+            <TextField fx:id="createLastNameTextField" promptText="last name">
                <HBox.margin>
-                  <Insets left="8.0"/>
+                  <Insets left="8.0" />
                </HBox.margin>
             </TextField>
          </children>
       </HBox>
-      <Button mnemonicParsing="false" text="create"/>
+      <Button fx:id="createNewStudentButton" mnemonicParsing="false" onAction="#createNewStudentInList" text="create" />
    </children>
 </VBox>

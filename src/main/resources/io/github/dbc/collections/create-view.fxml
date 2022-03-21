@@ -21,7 +21,7 @@
                   <Font size="18.0"/>
                </font>
             </Label>
-            <TextField fx:id="firstNameTextField" promptText="first name">
+            <TextField fx:id="createFirstNameTextField" promptText="first name">
                <HBox.margin>
                   <Insets left="8.0"/>
                </HBox.margin>
@@ -35,13 +35,13 @@
                   <Font size="18.0"/>
                </font>
             </Label>
-            <TextField fx:id="lastNameTextField" promptText="last name">
+            <TextField fx:id="createLastNameTextField" promptText="last name">
                <HBox.margin>
                   <Insets left="8.0"/>
                </HBox.margin>
             </TextField>
          </children>
       </HBox>
-      <Button mnemonicParsing="false" text="create"/>
+      <Button fx:id="createNewStudentButton" mnemonicParsing="false" onAction="#createNewStudentInList" text="create"/>
    </children>
 </VBox>
