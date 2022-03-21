@@ -1,9 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<?import javafx.scene.layout.VBox?>
-<VBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-      minWidth="-Infinity"
-      prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16"
-      fx:controller="io.github.dbc.collections.controller.StudentController"
-/>
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+      prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="io.github.dbc.collections.controller.StudentController">
+    <Label text="Update Student Info" underline="true">
+        <font>
+            <Font size="24.0"/>
+        </font>
+    </Label>
+    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+        <TextField promptText="first name, last name">
+            <HBox.margin>
+                <Insets right="8.0"/>
+            </HBox.margin>
+        </TextField>
+        <Button mnemonicParsing="false" text="search"/>
+    </HBox>
+    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+        <Label text="First Name">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="firstNameTextField" promptText="first name">
+            <HBox.margin>
+                <Insets left="8.0"/>
+            </HBox.margin>
+        </TextField>
+    </HBox>
+    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+        <Label text="Last Name">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="lastNameTextField" promptText="last name">
+            <HBox.margin>
+                <Insets left="8.0"/>
+            </HBox.margin>
+        </TextField>
+    </HBox>
+    <Button mnemonicParsing="false" text="update"/>
+</VBox>
