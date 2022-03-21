@@ -48,13 +48,23 @@ public class MainController {
     }
 
     @FXML
-    public void updateStudentInfo(ActionEvent actionEvent) {
-
+    public void updateStudentInfo(ActionEvent actionEvent) throws IOException {
+        Stage updateStudentInfo = new Stage();
+        FXMLLoader loader = new FXMLLoader(CRUDApplication.class.getResource("update-view.fxml"));
+        Scene scene = new Scene(loader.load(), 400.0, 400.0);
+        updateStudentInfo.setTitle("Update Student Info");
+        updateStudentInfo.setScene(scene);
+        updateStudentInfo.show();
     }
 
     @FXML
-    public void deleteStudent(ActionEvent actionEvent) {
-
+    public void deleteStudent(ActionEvent actionEvent) throws IOException {
+        Stage deleteStudentStage = new Stage();
+        FXMLLoader loader = new FXMLLoader(CRUDApplication.class.getResource("delete-view.fxml"));
+        Scene scene = new Scene(loader.load(), 400.0, 400.0);
+        deleteStudentStage.setTitle("Delete Student");
+        deleteStudentStage.setScene(scene);
+        deleteStudentStage.show();
     }
 
 }
