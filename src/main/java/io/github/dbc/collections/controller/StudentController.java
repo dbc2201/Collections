@@ -47,7 +47,9 @@ public class StudentController {
 
     @FXML
     public void createFakeStudent(ActionEvent actionEvent) {
-        Student student = new Student("Nobita", "Nobi");
+        String firstName = "Random";
+        String lastName = "Student";
+        Student student = new Student(firstName, lastName);
         MainController.getStudentList().add(student);
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("SUCCESS");

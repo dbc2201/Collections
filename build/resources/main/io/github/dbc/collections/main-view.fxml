@@ -3,41 +3,37 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Font?>
-<VBox xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/16"
-      fx:controller="io.github.dbc.collections.controller.MainController">
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.dbc.collections.controller.MainController">
    <padding>
-      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
    </padding>
 
    <Label fx:id="welcomeText" text="Collections CRUD Example">
       <font>
-         <Font size="24.0"/>
+         <Font size="24.0" />
       </font>
    </Label>
    <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-      <Button fx:id="createNewStudentButton" minWidth="150.0" mnemonicParsing="false" onAction="#createNewStudent"
-              prefWidth="150.0" text="Create New Student">
+      <Button fx:id="createNewStudentButton" minWidth="150.0" mnemonicParsing="false" onAction="#createNewStudent" prefWidth="150.0" styleClass="btn" text="Create New Student">
          <VBox.margin>
-            <Insets bottom="4.0" left="8.0" right="8.0" top="8.0"/>
+            <Insets bottom="4.0" left="8.0" right="8.0" top="8.0" />
          </VBox.margin>
       </Button>
-      <Button fx:id="viewAllStudentsButton" minWidth="150.0" mnemonicParsing="false" onAction="#viewAllStudents"
-              prefWidth="150.0" text="View All Students">
+      <Button fx:id="viewAllStudentsButton" minWidth="150.0" mnemonicParsing="false" onAction="#viewAllStudents" prefWidth="150.0" text="View All Students">
          <VBox.margin>
-            <Insets bottom="4.0" left="8.0" right="8.0" top="4.0"/>
+            <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
          </VBox.margin>
       </Button>
-      <Button fx:id="updateStudentInfoButton" minWidth="150.0" mnemonicParsing="false" onAction="#updateStudentInfo"
-              prefWidth="150.0" text="Update Student Info">
+      <Button fx:id="updateStudentInfoButton" minWidth="150.0" mnemonicParsing="false" onAction="#updateStudentInfo" prefWidth="150.0" text="Update Student Info">
          <VBox.margin>
-            <Insets bottom="4.0" left="8.0" right="8.0" top="4.0"/>
+            <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
          </VBox.margin>
       </Button>
-      <Button fx:id="deleteStudentButton" minWidth="150.0" mnemonicParsing="false" onAction="#deleteStudent"
-              prefWidth="150.0" text="Delete Student">
+      <Button fx:id="deleteStudentButton" minWidth="150.0" mnemonicParsing="false" onAction="#deleteStudent" prefWidth="150.0" text="Delete Student">
          <VBox.margin>
-            <Insets bottom="8.0" left="8.0" right="8.0" top="4.0"/>
+            <Insets bottom="8.0" left="8.0" right="8.0" top="4.0" />
          </VBox.margin>
       </Button>
    </VBox>
