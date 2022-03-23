@@ -45,6 +45,9 @@ public class StudentController {
     @FXML
     public Button createFakeStudentButton;
 
+    @FXML
+    public Button deleteStudentButton;
+
     private boolean doesUserExist = false;
 
     @FXML
@@ -165,6 +168,36 @@ public class StudentController {
     // delete
     @FXML
     public void deleteStudentFromList(ActionEvent actionEvent) {
+        String name = updateNameTextField.getText();
+        String firstName = name.split(",\\s")[0];
+        String lastName = name.split(",\\s")[1];
 
+        if (!searchNameInList(firstName, lastName)) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR");
+            alert.setContentText("Student Not Found");
+            alert.show();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("SUCCESS");
+            alert.setContentText(firstName + " found in the list");
+            alert.show();
+            doesUserExist = true;
+        }
+
+        if (doesUserExist) {
+            boolean result = MainController.getStudentList().remove(searchedStudent);
+            if (result) {
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("SUCCESS");
+                alert.setContentText("Student removed from list!");
+                alert.show();
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("ERROR");
+                alert.setContentText("ERROR!");
+                alert.show();
+            }
+        }
     }
 }
