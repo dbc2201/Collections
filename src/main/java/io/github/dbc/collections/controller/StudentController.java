@@ -152,7 +152,13 @@ public class StudentController {
             doesUserExist = true;
         }
         if (doesUserExist) {
+            searchedStudent.setFirstName(updateFirstNameTextField.getText());
+            searchedStudent.setLastName(updateLastNameTextField.getText());
 
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("SUCCESS");
+            alert.setContentText("Student Details Modified Successfully!");
+            alert.show();
         }
     }
 
