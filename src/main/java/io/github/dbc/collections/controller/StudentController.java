@@ -48,6 +48,9 @@ public class StudentController {
     @FXML
     public Button deleteStudentButton;
 
+    @FXML
+    public TextField deleteNameTextField;
+
     private boolean doesUserExist = false;
 
     @FXML
@@ -187,17 +190,17 @@ public class StudentController {
 
         if (doesUserExist) {
             boolean result = MainController.getStudentList().remove(searchedStudent);
+            Alert alert;
             if (result) {
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("SUCCESS");
                 alert.setContentText("Student removed from list!");
-                alert.show();
             } else {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("ERROR");
                 alert.setContentText("ERROR!");
-                alert.show();
             }
+            alert.show();
         }
     }
 }
