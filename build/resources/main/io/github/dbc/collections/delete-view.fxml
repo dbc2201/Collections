@@ -16,12 +16,12 @@
         </font>
     </Label>
     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-        <TextField promptText="first name, last name">
+        <TextField fx:id="deleteNameTextField" promptText="first name, last name">
             <HBox.margin>
                 <Insets right="8.0"/>
             </HBox.margin>
         </TextField>
-        <Button fx:id="deleteStudentButton" mnemonicParsing="false" onAction="#searchName" text="search"/>
+        <Button fx:id="deleteStudentButton" mnemonicParsing="false" onAction="#searchNameDelete" text="search"/>
     </HBox>
-    <Button mnemonicParsing="false" text="delete"/>
+    <Button mnemonicParsing="false" text="delete" onAction="#deleteStudentFromList"/>
 </VBox>

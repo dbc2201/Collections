@@ -68,7 +68,7 @@ public class StudentController {
     private Student searchedStudent;
 
     @FXML
-    private boolean searchName(ActionEvent actionEvent) {
+    private boolean searchNameUpdate(ActionEvent actionEvent) {
         String firstName = updateNameTextField.getText().split(",\\s")[0];
         String lastName = updateNameTextField.getText().split(",\\s")[1];
 
@@ -91,6 +91,31 @@ public class StudentController {
                 updateFirstNameTextField.setText(student.getFirstName());
                 updateLastNameTextField.setText(student.getLastName());
             }
+        }
+
+        return doesUserExist;
+    }
+
+    @FXML
+    private boolean searchNameDelete(ActionEvent actionEvent) {
+        String firstName = deleteNameTextField.getText().split(",\\s")[0];
+        String lastName = deleteNameTextField.getText().split(",\\s")[1];
+
+        boolean doesUserExist = MainController.getStudentList().stream()
+                .anyMatch(
+                        student -> student.getFirstName().equals(firstName)
+                                && student.getLastName().equals(lastName)
+                );
+
+        if (doesUserExist) {
+            MainController.getStudentList().stream()
+                    .filter(student -> student.getFirstName().equals(firstName) &&
+                            student.getLastName().equals(lastName))
+                    .findFirst().ifPresent(student -> searchedStudent = student);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("SUCCESS");
+            alert.setContentText(firstName + " found in the list");
+            alert.show();
         }
 
         return doesUserExist;
@@ -145,17 +170,13 @@ public class StudentController {
         String firstName = name.split(",\\s")[0];
         String lastName = name.split(",\\s")[1];
 
-        if (!searchNameInList(firstName, lastName)) {
+        if (searchNameInList(firstName, lastName)) {
+            doesUserExist = true;
+        } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ERROR");
             alert.setContentText("Student Not Found");
             alert.show();
-        } else {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("SUCCESS");
-            alert.setContentText(firstName + " found in the list");
-            alert.show();
-            doesUserExist = true;
         }
         if (doesUserExist) {
             searchedStudent.setFirstName(updateFirstNameTextField.getText());
@@ -171,7 +192,7 @@ public class StudentController {
     // delete
     @FXML
     public void deleteStudentFromList(ActionEvent actionEvent) {
-        String name = updateNameTextField.getText();
+        String name = deleteNameTextField.getText();
         String firstName = name.split(",\\s")[0];
         String lastName = name.split(",\\s")[1];
 
@@ -180,16 +201,13 @@ public class StudentController {
             alert.setTitle("ERROR");
             alert.setContentText("Student Not Found");
             alert.show();
-        } else {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("SUCCESS");
-            alert.setContentText(firstName + " found in the list");
-            alert.show();
-            doesUserExist = true;
         }
 
         if (doesUserExist) {
-            boolean result = MainController.getStudentList().remove(searchedStudent);
+            boolean result = MainController.getStudentList().removeIf(
+                    student -> student.getFirstName().equals(firstName) &&
+                            student.getLastName().equals(lastName)
+            );
             Alert alert;
             if (result) {
                 alert = new Alert(Alert.AlertType.CONFIRMATION);
