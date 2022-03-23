@@ -9,6 +9,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
+import java.util.Optional;
+
 public class StudentController {
 
     @FXML
@@ -57,13 +59,33 @@ public class StudentController {
         alert.show();
     }
 
+    private Student searchedStudent;
+
     @FXML
     private boolean searchName(ActionEvent actionEvent) {
         String firstName = updateNameTextField.getText().split(",\\s")[0];
         String lastName = updateNameTextField.getText().split(",\\s")[1];
 
         boolean doesUserExist = MainController.getStudentList().stream()
-                .anyMatch(student -> student.getFirstName().equals(firstName) && student.getLastName().equals(lastName));
+                .anyMatch(
+                        student -> student.getFirstName().equals(firstName)
+                                && student.getLastName().equals(lastName)
+                );
+
+        if (doesUserExist) {
+            Optional<Student> existingStudent = MainController.getStudentList().stream()
+                    .filter(student -> student.getFirstName().equals(firstName) &&
+                            student.getLastName().equals(lastName))
+                    .findFirst();
+
+            if (existingStudent.isPresent()) {
+                // load the details fo the text fields
+                Student student = existingStudent.get();
+                searchedStudent = student;
+                updateFirstNameTextField.setText(student.getFirstName());
+                updateLastNameTextField.setText(student.getLastName());
+            }
+        }
 
         return doesUserExist;
     }
